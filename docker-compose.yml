@@ -1,0 +1,33 @@
+version: '3'
+services: 
+  php:
+    container_name: php
+    image: php:8.1-fpm
+    restart: unless-stopped
+    volumes:
+      - ./test/:/var/www/html
+    ports:
+      - 9000
+  nginx:
+    container_name: nginx
+    image: nginx:stable
+    restart: unless-stopped
+    volumes:
+      - ./test/:/var/www/html
+      - ./conf.d:/etc/nginx/conf.d
+    ports:
+      - 80:80
+  db:
+    container_name: mariadb
+    image: mariadb:10.9.3
+    restart: unless-stopped
+    volumes:
+      - db-data:/var/lib/mysql
+    environment:
+      MARIADB_ROOT_PASSWORD: r00tP@ssword
+      MARIADB_DATABASE: wpdb
+      MARIADB_USER: wpdbuser
+      MARIADB_PASSWORD: P@ssw0rd
+
+volumes:
+  db-data:
