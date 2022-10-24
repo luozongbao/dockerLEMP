@@ -24,6 +24,7 @@ services:
     image: mariadb:10.9.3
     restart: unless-stopped
     volumes:
+      - ./initdb:/docker-entrypoint-initdb.d
       - db-data:/var/lib/mysql
     environment:
       MARIADB_ROOT_PASSWORD: r00tP@ssword
