@@ -1,7 +1,7 @@
 # dockerLEMP
 I create docker compose for a LEMP stack for at least can run wordpress in development environment.  For better understanding how to make this please watch Andrew Schmelyun's Chanel on this at [this link](https://www.youtube.com/watch?v=kIqWxjDj4IU)
 
-## Inittial data
+## Initial data
 1. simply put the sql file in the "initdb" folder
 2. On spin up, the composer will import all data in the file to a new database same name as the sql file.
 
