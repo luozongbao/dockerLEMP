@@ -5,6 +5,8 @@ services:
       context: .
       dockerfile: php.dockerfile      
     container_name: php
+    depends_on:
+      - db
     restart: unless-stopped
     volumes:
       - ./test/:/var/www/html
@@ -12,6 +14,9 @@ services:
       - 9000
   nginx:
     container_name: nginx
+    depends_on:
+      - php
+      - db
     image: nginx:stable-alpine
     restart: unless-stopped
     volumes:
